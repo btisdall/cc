@@ -6,11 +6,11 @@ endif
 
 docker_base_command = docker run \
 	-e AWS_PROFILE=$${AWS_PROFILE} \
-	-e HOME=/code \
+	-e HOME=/aws \
 	-it \
-	-v `pwd`:/code \
-	-v $${HOME}/.aws:/code/.aws \
-	-w /code \
+	-v `pwd`:/aws/config \
+	-v $${HOME}/.aws:/aws/.aws \
+	-w /aws \
 	${IMAGE}
 
 .PHONY: shell
