@@ -1,9 +1,5 @@
 IMAGE = photobox-custodian:latest
 
-ifeq (${AWS_PROFILE},)
-$(error AWS_PROFILE unset)
-endif
-
 docker_base_command = docker run \
 	-e AWS_PROFILE=$${AWS_PROFILE} \
 	-e HOME=/aws \
