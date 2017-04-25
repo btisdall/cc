@@ -1,7 +1,6 @@
 IMAGE = photobox-custodian:latest
 
 docker_base_command = docker run \
-	-e AWS_PROFILE=$${AWS_PROFILE} \
 	-e HOME=/aws \
 	-it \
 	-v `pwd`:/aws/config \
