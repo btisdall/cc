@@ -1,0 +1,14 @@
+policies:
+- name: ebs-mark-unattached-deletion
+  resource: ebs
+  filters:
+  - Attachments: []
+  - "tag:maid_status": absent
+  actions:
+   - type: mark-for-op
+     op: delete
+     days: 30
+  mode:
+    type: periodic
+    role: "arn:aws:iam::%%ACCOUNT_ID%%:role/custodian-lambda"
+    schedule: "rate(1 hour)"
