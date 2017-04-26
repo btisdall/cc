@@ -2,4 +2,5 @@
 
 set -e
 
-sed -i "s!%%ACCOUNT_ID%%!$(aws sts get-caller-identity --query 'Account' --output text)"! *yaml
+ACCOUNTID=${ACCOUNT_ID:-"$(aws sts get-caller-identity --query 'Account' --output text)"}
+sed -i "s!%%ACCOUNT_ID%%!${ACCOUNT_ID}!" *yaml
