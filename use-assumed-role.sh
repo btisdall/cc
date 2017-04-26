@@ -8,5 +8,4 @@ unset AWS_SECRET_ACCESS_KEY AWS_ACCESS_KEY_ID AWS_SESSION_TOKEN
 
 ACCOUNT_ID="$(aws sts get-caller-identity --query 'Account' --output text)"
 eval $(aws sts assume-role --role-arn arn:aws:iam::${ACCOUNT_ID}:role/custodian-executor --role-session-name SER-1005 \
-
   | jq '.Credentials|["AWS_SECRET_ACCESS_KEY=\(.SecretAccessKey)","AWS_ACCESS_KEY_ID=\(.AccessKeyId)","AWS_SESSION_TOKEN=\(.SessionToken)"]|map("export \(.)")[]' -r)
